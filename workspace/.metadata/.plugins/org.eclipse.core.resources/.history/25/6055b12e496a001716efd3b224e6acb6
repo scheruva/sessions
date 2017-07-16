@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Quiz # 1</title>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script>
+	$(document).ready(function() {
+		console.log("document has loaded");
+
+		// Make the 1st div visible
+		$("button").click(function() {
+			console.log("Start clicked...");
+			$("div").hide();
+		});
+
+		$("a#send-answer").click(function() {
+			console.log("Inside send-answer function...");
+			var answer = jQuery("textarea#answer").val();
+			alert(answer);
+		});
+
+	});
+</script>
+
+</head>
+<body>
+	<h1>Welcome to Learning Sessions Quiz # 1</h1>
+
+	<button>Start</button>
+	<div id="q1">
+		Q1. What was the 1st version of the Internet called? (Also, known as
+		the father of the internet) <br />
+		<textarea id="answer" rows="4" cols="50"></textarea>
+		<br> <a id="send-answer" href="">Next</a>
+	</div>
+
+</body>
+</html>

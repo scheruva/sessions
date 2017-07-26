@@ -1,7 +1,7 @@
-/.metadata/
-/.settings/
-/.project/
-.DS_Store
-RemoteSystemsTempFiles
+.metadata/
+.settings/
+.project/
+.DS_Store/
+RemoteSystemsTempFiles/
 .git
 

@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Move &apos;jquery-3.2.1.min.js&apos; to &apos;js&apos;" description="Move &apos;jquery-3.2.1.min.js&apos; to &apos;js&apos;" destination="WebContent/js" element1="WebContent/jquery-3.2.1.min.js" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1500222933533" updateReferences="true"/>&#x0A;<refactoring comment="Move &apos;animate.css&apos; to &apos;css&apos;" description="Move &apos;animate.css&apos; to &apos;css&apos;" destination="WebContent/css" element1="WebContent/animate.css" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1500231694295" updateReferences="true"/>
-</session>

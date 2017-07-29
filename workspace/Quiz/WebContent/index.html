@@ -17,6 +17,9 @@ h1, .alpha {
 	font-family: "Lucida Console", Monaco, monospace;
 }
 
+body {
+	background-color: teal;
+}
 .site__title {
 	color: #f35626;
 }
@@ -40,7 +43,7 @@ a:hover {
 
 p {
     font-family: "Lucida Console", Monaco, monospace;
-    font-color: blue;
+    font-color: silver;
 }
 
 </style>
@@ -53,16 +56,10 @@ p {
 		$("div#answers").hide();
 		
 		var questionArray = [
-			"What was the 1st version of the Internet called? (Also, known as the father of the internet)",
-			"Name one of the older programming languages",
-			"The language understood by computers is called:",
-			"What is the unit of memory called? Distance is to miles as memory is to: ",
-			"What are the brains of the computer called?",
-			"What is the difference between primary and secondary memory?",
-			"What is the device that connects all the parts of a computer together?",
-			"What does HTML mean?",
-			"How do you start an HTML document? (What is the very first tag you need?)",
-			"What are the 2 main sections of an HTML document?"
+			"What is a usecase?",
+			"Describe the elements of a usecase template. e.g. Description",
+			"List at least 10 usecases for an ice-cream store.",
+			"For any one of the usecases you entered for the ice-cream store, describe the usecase in detail. Fill in the template: Description, Pre-requisites, Step-by-Step, Expected Results, Exceptions:"
 		];
 		
 
@@ -138,7 +135,7 @@ p {
 </head>
 <body>
 	<!-- Ref: https://github.com/daneden/animate.css/blob/master/README.md | wobble rubberBand mega -->
-	<h1 class="animated rubberBand site__title">Learning Tech Quiz</h1>
+	<h1 class="animated rubberBand site__title">Learning Tech Quiz - Design</h1>
 
 	<button>Start</button>
 
@@ -146,7 +143,7 @@ p {
 
 		<input type="hidden" id="question_number" value="" />
 		<p id="question_text"></p>
-		<textarea id="answer" rows="4" cols="50"></textarea>
+		<textarea id="answer" rows="20" cols="100"></textarea>
 		<br /> <a id="send-answer" href="#">Next</a>
 
 	</div>

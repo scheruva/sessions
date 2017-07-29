@@ -1,8 +1,0 @@
-INDEX VERSION 1.4+/Users/suraj/GoogleDrive/Ref/Learning/sessions/workspace/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
-2275799960.index
-1951585661.index
-4294658749.index
-2485359037.index
-1501850720.index
-2698495352.index
-3574172389.index

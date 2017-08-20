@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Input</title>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script>
+	
+	
+	$(document).ready(function() {
+		console.log("document has loaded");
+		
+		$("#cancel").click(function() {
+			console.log("cancel button clicked");
+			
+			// close the window
+			self.close();
+		});
+		
+		$("#save").click(function() {
+			console.log("save button clicked");
+			
+			// read the words keyed by the user into the user_comment box
+			var input=$("#user_comment").val();
+			alert("You entered: "+input);
+			
+			// write the text to the parent page
+			//var targetDiv=$("#outputMsgDiv", top.document);
+			//var targetDiv=window.opener.$("#outputMsgDiv");
+			//var targetDiv=$("#outputMsgDiv", opener.document);
+			
+			//window.parent.document.getElementById("outputMsgDiv").value += input;
+			
+			if (opener.document){
+				$("#outputMsgDiv").setComment(input, "outputMsgDiv");
+			} else {
+				$("#outputMsgDiv", window.opener).setComment(input, "outputMsgDiv");
+			}
+			
+			targetDiv.innerHTML = input;
+			
+			// close the window
+			self.close();
+		});
+		
+	});
+</script>
+
+</head>
+<body>
+<h3>Comments</h3>
+<textarea id="user_comment" rows="15" cols="60"></textarea>
+<br/>
+<input id="cancel" type="button" value="Cancel"/>
+&nbsp;&nbsp;
+<input id="save" type="button" value="Save"/>
+</body>
+</html>

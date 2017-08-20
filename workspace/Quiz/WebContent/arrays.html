@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sessions - Javascript Arrays</title>
+<!-- Added for modal window setup -->
+<link rel="stylesheet" src="jquery-ui-1.12.1.custom/jquery-ui.min.css">
+
+<script src="js/jquery-3.2.1.min.js"></script>
+
+<!-- Added for modal window setup -->
+<script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+
+<style type="text/css">
+
+.validateTips { border: 1px solid transparent; padding: 0.3em; }
+</style>
+
+<script>
+    var inputWin;
+	$(document).ready(function() {
+		console.log("document has loaded");
+
+		$("#pop-open").click(function() {
+			console.log("popup button clicked");
+			inputWin = window.open("input.html", "Comments", "width=400,height=300,scrollbars=yes");
+		});
+
+	});
+	
+	// Add comments to existing ones in a div
+	function setComment(userComment, idToWrite){
+		console.log("[setComment] userComment = "+userComment+"");
+		var myDiv = document.getElementById(idToWrite);
+		var prevText = myDiv.innerHTML;
+		console.log("[setComment] prevText = "+prevText);
+		
+		if (typeof prevText == "undefined"){
+			console.log("[setComment] skipping previous text...");
+			myDiv.innerHTML = userComment;
+		} else {
+			console.log("[setComment] writing prev + user input to target Div...");
+			myDiv.innerHTML = prevText+"<br/>"+userComment;
+		}	
+	}
+	// End of setComment
+	
+	$(function(){
+		var dialog, form,
+		comment = $("#comment"),
+		allFields = $( [] ).add( comment ),
+		tips = $( ".validateTips" );
+		
+		function updateTips(tipMsg){
+			tips.text(tipMsg).addClass("ui-state-highlight");
+			setTimeout(function() {
+		        tips.removeClass( "ui-state-highlight", 1500 );
+		      }, 500 );
+		}
+		
+		function checkLength(fldName, fldLabel, min, max){
+			if (fldName.val().length > max || fldName.val().length < min){
+				fldName.addClass("ui-state-error");
+				updateTips( "Length of " + fldLabel + " must be between " +
+				          min + " and " + max + "." );
+				return false;
+			} else {
+				return true;
+			}
+		}
+		
+		function addComment(){
+			var valid = true;
+			allFields.removeClass("ui-state-error");
+			var msg = $("#comment").val();
+			console.log("[addComment] comment = "+msg);
+			valid = valid && checkLength(comment, "comment", 0, 128);
+			
+			if (valid){
+				console.log("[addComment] msg = "+msg);
+				setComment(msg, "outputMsgDiv");
+				dialog.dialog("close");
+			}
+			return valid;
+		}
+		
+		dialog = $( "#dialog-form" ).dialog({
+	      autoOpen: false,
+	      height: 160,
+	      width: 350,
+	      modal: true,
+	      buttons: {
+	        "Add a comment": addComment,
+	        
+	        Cancel: function() {
+	          dialog.dialog( "close" );
+	        }
+	      },
+	      close: function() {
+	        form[ 0 ].reset();
+	        allFields.removeClass( "ui-state-error" );
+	      }
+	    });
+		
+		form = dialog.find( "form" ).on( "submit", function( event ) {
+	      event.preventDefault();
+	      addComment();
+	    });
+		
+		// define the dialog launch button action
+		$( "#add-comment" ).button().on( "click", function() {
+	      dialog.dialog( "open" );
+	    });
+	});
+</script>
+
+<script type="text/javascript" src="js/myarrays.js">
+</script>
+
+<style>
+body {
+	color: #3cf;
+	font-family: Montserrat;
+	font-size: 14px;
+	margin: 5;
+}
+</style>
+
+</head>
+<body>
+	<input type="button" value="JS Test" onclick="jsTest('outputMsgDiv')" />
+	&nbsp;&nbsp;
+	<input type="button" value="Reset Div" onclick="resetDiv('outputMsgDiv')" />
+	&nbsp;&nbsp;
+	<!--  Ref: https://jqueryui.com/dialog/#modal-form -->
+	<input id="add-comment" type="button" value="Launch Comment Window" />
+	
+	<div id="outputMsgDiv"></div>
+	
+	<!--  This is the form that will be displayed as a modal window, 
+			instead of a pop-up one!
+			Pop-up windows are not secure, so new browsers prevent sharing of data from the popup to the parent window.
+			That is why we want to use modal windows.
+			
+			What is a modal window?
+			It is a window that pops-up but is on the same window (i.e. it does not create a new browser window/tab).
+			This ensures that the user never leaves the working window, while focusing their attention on the input / action required to do.
+	 -->
+	<div id="dialog-form" title="New comment">
+		<form>
+		  <fieldset>
+		    <label for="comment">Comment</label>
+		    <textarea name="comment" id="comment" rows="5" cols="60" class="text ui-widget-content ui-corner-all"></textarea>
+		
+		  </fieldset>
+		</form>
+	</div> 
+
+</body>
+</html>
